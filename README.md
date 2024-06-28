@@ -260,5 +260,6 @@ project
         ├── ca.crt
         └── network.yaml
 ```
-### References
- - [Hyperledger Besu Documentation](https://besu.hyperledger.org/)
+## References
+ - [Deploying a DLT network on Minikube using Bevel](https://hyperledger-bevel.readthedocs.io/en/latest/tutorials/bevel-minikube-setup/)
+ - [Developer Pre-requisites](https://hyperledger-bevel.readthedocs.io/en/latest/tutorials/dev-prereq/)
