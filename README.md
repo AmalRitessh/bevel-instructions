@@ -260,6 +260,13 @@ project
         ├── ca.crt
         └── network.yaml
 ```
+**TIP:**
+add the following commands to your `.bashrc` file.
+```bash
+export PATH=./project/bin:$PATH
+export VAULT_ADDR='http://<Your Vault local IP address>:8200'
+export VAULT_TOKEN="<Your Vault root token>"
+```
 ## References
  - [Deploying a DLT network on Minikube using Bevel](https://hyperledger-bevel.readthedocs.io/en/latest/tutorials/bevel-minikube-setup/)
  - [Developer Pre-requisites](https://hyperledger-bevel.readthedocs.io/en/latest/tutorials/dev-prereq/)
