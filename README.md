@@ -5,7 +5,7 @@
 ![](https://img.shields.io/badge/Exploration_By-Amal_Ritessh_A_P-gold)  <br/>
 ![](https://img.shields.io/badge/Start-None-silver) ![](https://img.shields.io/badge/End-None-silver) 
 
- <p align="center"><img src="../../logos/Hyperledger_Besu.jpg" width=320> </p>
+ <p align="center"><img src="./Hyperledger_Project Logos_Master_Hyperledger_Bevel.svg" width=320> </p>
 
 ### Introduction
 Hyperledger Bevel is an advanced automation framework tailored for the 
