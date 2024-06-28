@@ -121,5 +121,66 @@ project
 │
 └── bevel
 ```
+
+
+##  Deploying a DLT network on Minikube using Bevel
+1. start minikube, use `ifconfig` to check for the ip address.
+```bash
+minikube start --memory 2000 --cpus 2 --kubernetes-version=1.23.1 --apiserver-ips=<specify public ip of VM>
+```
+2. Start a proxy which is required for ansible controller to access the minikube k8s
+```bash
+docker run -d --network minikube -p 18443:18443 chevdor/nginx-minikube-proxy
+```
+3. Create an `build` folder inside `./project/bevel/` folder.
+```bash
+mkdir ./project/bevel/build
+```
+4. Copy ca.crt, client.key, client.crt from `~/.minikube` to `./project/bevel/build` folder.
+```bash
+cp ~/.minikube/ca.crt build/
+cp ~/.minikube/profiles/minikube/client.key build/
+cp ~/.minikube/profiles/minikube/client.crt build/
+```
+5. Copy `~/.kube/config` file `./project/bevel/build` folder.
+```bash
+cp ~/.kube/config build/
+```
+6. Open the above `config` file in build directory and update file path for `certificate-authority`, `client-certificate` and `client-key` to `home/bevel/build/ca.crt`, `home/bevel/build/client.crt` and `home/bevel/build/client.key`. (use `minikube ip` command to find the ip of minikube)
+```bash
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /home/bevel/build/ca.crt
+    extensions:
+    - extension:
+        last-update: Fri, 28 Jun 2024 13:09:51 IST
+        provider: minikube.sigs.k8s.io
+        version: v1.33.1
+      name: cluster_info
+    server: https://<minikube_ip>:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Fri, 28 Jun 2024 13:09:51 IST
+        provider: minikube.sigs.k8s.io
+        version: v1.33.1
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /home/bevel/build/client.crt
+    client-key: /home/bevel/build/client.key
+```
+
 ### References
  - [Hyperledger Besu Documentation](https://besu.hyperledger.org/)
