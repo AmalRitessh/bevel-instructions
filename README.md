@@ -184,12 +184,81 @@ users:
 **NOTE:**
 If you ever delete and recreate minikube, the above steps from 4 to 6 has to be repeated.
 
-7. Setup Hashicorp Vault, this has to be done after you have unsealed vault in another terminal [check](./README.md#hashicorp-vault).
+7. Setup Hashicorp Vault, this has to be done after you have unsealed vault in another terminal. [HashiCorp Vault](./README.md#hashicorp-vault)
 ```bash
 export VAULT_ADDR='http://<Your Vault local IP address>:8200'
 export VAULT_TOKEN="<Your Vault root token>"
 # enable Secrets v2
 vault secrets enable -version=2 -path=secretsv2 kv
+```
+
+8. Edit the network configuration file, Choose the DLT/Blockchain platform you want to run and copy the relevant sample network.yaml to `build` folder; rename it to `network.yaml`.
+```bash
+# For example, for Indy
+cd project/bevel
+cp /platforms/hyperledger-indy/configuration/samples/network-minikube.yaml build/network.yaml
+```
+- Open the above `build/network.yaml` in your favourite editor and Update Docker configurations:
+```bash
+docker:
+    url: "ghcr.io/hyperledger"
+    # Comment username and password as it is public repo
+    #username: "<your docker username>"
+    #password: "<your docker password/token>"
+```
+- For each organization, update ONLY the following and leave everything else as is:
+```bash
+cloud_provider: minikube
+k8s:
+    context: "minikube"
+    config_file: "/home/bevel/build/config"
+vault:
+    url: "http://<Your Vault local IP address>:8200" # Use the local IP address NOT localhost e.g. http://192.168.0.1:8200
+    root_token: "<your vault_root_token>"
+gitops:
+    git_protocol: "https" # Option for git over https or ssh
+    git_url: "<https/ssh url of your forked repo>" #e.g. "https://github.com/hyperledger/bevel.git"
+    git_repo: "<url of your forked repo without the https://>" #e.g. "github.com/hyperledger/bevel.git"
+    username: "<github_username>"
+    password: "<github token>"
+    email: "<github_email>"
+```
+
+9. Make sure that Minikube and Vault server are running. Check by running:
+```bash
+minikube status
+vault status
+```
+
+10. Now run the following commands to deploy your chosen DLT on minikube:
+```bash
+cd bevel
+docker run -it -v $(pwd):/home/bevel/ --network="host" ghcr.io/hyperledger/bevel-build:latest /bin/bash
+
+# Ensure that git config is setup
+git config --global user.name "UserName"
+git config --global user.email "UserEmailAddress"
+
+cd bevel
+./run.sh
+```
+
+#### Directory Structure
+```bash
+project
+│   ├── config.hcl
+│
+├── bin
+│   ├── vault
+│   └── minikube
+│
+└── bevel
+    └── build
+        ├── config
+        ├── client.crt
+        ├── client.key
+        ├── ca.crt
+        └── network.yaml
 ```
 ### References
  - [Hyperledger Besu Documentation](https://besu.hyperledger.org/)
