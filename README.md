@@ -181,6 +181,8 @@ users:
     client-certificate: /home/bevel/build/client.crt
     client-key: /home/bevel/build/client.key
 ```
+**NOTE:**
+If you ever delete and recreate minikube, the above steps from 4 to 6 has to be repeated.
 
 ### References
  - [Hyperledger Besu Documentation](https://besu.hyperledger.org/)
