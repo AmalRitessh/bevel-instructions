@@ -26,8 +26,8 @@ Bevel currently supports the following DLT/Blockchain Platforms:
   
 ## Pre-requisites
 - Git Repository
-- Minikube
 - HashiCorp Vault
+- Minikube
 - Docker
 
 ### Git Repository
@@ -35,13 +35,16 @@ Bevel currently supports the following DLT/Blockchain Platforms:
 - So first you are asked to fork Bevel repo from hyperledger/bevel main branch
 - then you have to create a git token
 - once its done, follow the commands to clone repo in host machine
+
 ``` bash
 mkdir project
 cd project
 git clone https://<user_name>:<git_token>@github.com/<user_name>/bevel.git
 git remote set-url origin https://<user_name>:<git_token>@github.com/<user_name>/bevel.git #This command changes the remote repository URL to include a GitHub username and token for authentication.
 ```
+
 -  to create an local branch in you forked repo follow the commands
+
 ``` bash
 cd bevel
 git checkout develop # to get latest code
@@ -49,55 +52,74 @@ git pull
 git checkout -b local
 git push --set-upstream origin local
 ```
+
 - to verify, you can check if local branch has been created to you forked bevel repo
+
+### HashiCorp Vault
+- We need Hashicorp Vault for the certificate and key storage.
+- To install the binary file, use the following command
+
+```bash
+wget https://releases.hashicorp.com/vault/1.17.1/vault_1.17.1_linux_amd64.zip
+unzip vault_1.17.1_linux_amd64.zip
+```
+
+- once the binary `vault` is downloaded, move it `project/bin` folder
+
+```bash
+mkdir project/bin
+mv vault ./project/bin/
+export PATH=./project/bin:$PATH
+```
+- create an `config.hcl` file in `project/` folder with the following contents
+
+```bash
+ui = true
+storage "file" {
+   path    = "./project/data"
+}
+listener "tcp" {
+   address     = "0.0.0.0:8200"
+   tls_disable = 1
+}
+disable_mlock = true
+```
+
+- Start the Vault server by executing the following command. And initialize the Vault by providing your choice of key shares and threshold.  (this will occupy one terminal)
+
+```bash
+vault server -config=config.hcl
+```
 
 ### Minikube
 
+- For development environment, minikube can be used as the Kubernetes cluster on which the DLT network will be deployed.
+- To install the binary file, use the following command.
 
-##### System Tools #####
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
+mv minikube-linux-arm64 minikube  # rename the binary to minikube
 ```
-sudo apt install wget curl
+
+- Move the binary `minikube`, to path `project/bin/` folder
+  
+```bash
+mv minikube ./project/bin/
 ```
 
-After verifying and installing the prerequisites we can proceed with the step by step installation process
+### Docker
+- Install Docker Desktop from their website [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-#### Besu Installation and Configuration
-##### Step 1: Download Hyperledger Besu
-- This command uses wget to download the specified version of Hyperledger Besu from its official GitHub releases page. 
+#### Directory Structure (After Pre-requisites)
+```bash
+project
+│   ├── config.hcl
+│
+├── bin
+│   ├── vault
+│   └── minikube
+│
+└── bevel
 ```
- wget https://github.com/hyperledger/besu/releases/download/24.5.2/besu-24.5.2.tar.gz
- ```
-- Extracting the tar file
- ```
- tar -xzf besu-24.5.2.tar.gz  
- ``` 
-##### Step 2: Setting the path variable
-- Navigates into the directory where Besu was extracted.
- ```
-cd besu-24.5.2  
- ```
-- This command adds the current directory's bin subdirectory to the system PATH using $(pwd) to dynamically insert the current directory path.
- ```
-export PATH=$PATH:$(pwd)/bin
- ```
-##### Step 3: Setting up the ~./bashrc file
-- The echo command appends the PATH export statement to the ~/.bashrc file, ensuring the PATH change is applied in future terminal sessions.
- ```
-echo 'export PATH=$PATH:$(pwd)/bin' >> ~/.bashrc  
- ```
-- The source ~/.bashrc command reloads the ~/.bashrc file to apply the PATH changes immediately.
- ```
-echo 'export PATH=$PATH:$(pwd)/bin' >> ~/.bashrc  
- ```
-##### Step 4: Verifing the installantion
-- Running besu --version verifies that Besu is installed correctly and accessible in your terminal. 
- ```
-besu –version 
- ```
-
-### Running the Network
-
-### Deploying the Smart Contracts
-
 ### References
  - [Hyperledger Besu Documentation](https://besu.hyperledger.org/)
