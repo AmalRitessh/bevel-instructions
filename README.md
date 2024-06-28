@@ -1,33 +1,58 @@
 # Hyperledger Exploration  ![](https://img.shields.io/badge/-Live-darkgreen)
-![](https://img.shields.io/badge/Domain-Blockchain-blue) ![](https://img.shields.io/badge/Blockchain-Hyperledger-brown) ![](https://img.shields.io/badge/Hyperledger-Besu-gold) <br/> ![](https://img.shields.io/badge/Reviewed-Ramaguru_Radhakrishnan-bronze) <br/> 
+![](https://img.shields.io/badge/Domain-Blockchain-blue) ![](https://img.shields.io/badge/Blockchain-Hyperledger-brown) ![](https://img.shields.io/badge/Hyperledger-Bevel-gold) <br/> ![](https://img.shields.io/badge/Reviewed-None-bronze) <br/> 
 
-## Hyperledger Besu
-![](https://img.shields.io/badge/Exploration_By-B_Vijay_Nishanth-gold)  <br/>
-![](https://img.shields.io/badge/Start-May-silver) ![](https://img.shields.io/badge/End-June-silver) 
+## Hyperledger Bevel
+![](https://img.shields.io/badge/Exploration_By-Amal_Ritessh_A_P-gold)  <br/>
+![](https://img.shields.io/badge/Start-None-silver) ![](https://img.shields.io/badge/End-None-silver) 
 
  <p align="center"><img src="../../logos/Hyperledger_Besu.jpg" width=320> </p>
 
 ### Introduction
-Hyperledger Besu is an Ethereum client developed under the Hyperledger project by the Linux Foundation. It supports Ethereum's mainnet, private networks, and testnets. Besu is designed to be enterprise-friendly, offering advanced features like privacy and permissioning, consensus algorithms such as Proof of Stake, Proof of Work, and Proof of Authority (IBFT 2.0, QBFT, and Clique), and comprehensive monitoring and management tools. 
+Hyperledger Bevel is an advanced automation framework tailored for the 
+seamless deployment of robust, production-ready Distributed Ledger 
+Technology (DLT) networks on cloud-based infrastructures. Eliminating the 
+need for intricate solution architecture, Bevel empowers teams to deliver with 
+precision 
 
-### Exploration Test Setup
-This Exploration aims to setup hyperledger besu as a private network built using binaries.
-- Operating system - Linux Mint 21.3 Virginia
+### Which platforms does Bevel Support?
+Bevel currently supports the following DLT/Blockchain Platforms:
+- R3 Corda
+- Hyperledger Fabric
+- Hyperledger Indy
+- Hyperledger Besu
+- Quorum
+- Substrate
 
   
-### Prerequisities
-- Java Development Kit (JDK) Version 11 or higher
-- System Tools
+## Pre-requisites
+- Git Repository
+- Minikube
+- HashiCorp Vault
+- Docker
 
-### Installation Instruction
-#### Prerequisities
-##### JDK
-- I have chosen openjdk-22.0.1
-```
-sudo apt update 
+### Git Repository
 
-sudo apt install openjdk-21-jdk 
+- So first you are asked to fork Bevel repo from hyperledger/bevel main branch
+- then you have to create a git token
+- once its done, follow the commands to clone repo in host machine
+``` bash
+mkdir project
+cd project
+git clone https://<user_name>:<git_token>@github.com/<user_name>/bevel.git
+git remote set-url origin https://<user_name>:<git_token>@github.com/<user_name>/bevel.git #This command changes the remote repository URL to include a GitHub username and token for authentication.
 ```
+-  to create an local branch in you forked repo follow the commands
+``` bash
+cd bevel
+git checkout develop # to get latest code
+git pull
+git checkout -b local
+git push --set-upstream origin local
+```
+- to verify, you can check if local branch has been created to you forked bevel repo
+
+### Minikube
+
 
 ##### System Tools #####
 ```
