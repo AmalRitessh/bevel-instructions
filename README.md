@@ -184,5 +184,12 @@ users:
 **NOTE:**
 If you ever delete and recreate minikube, the above steps from 4 to 6 has to be repeated.
 
+7. Setup Hashicorp Vault, this has to be done after you have unsealed vault in another terminal [check](./README.md#hashicorp-vault).
+```bash
+export VAULT_ADDR='http://<Your Vault local IP address>:8200'
+export VAULT_TOKEN="<Your Vault root token>"
+# enable Secrets v2
+vault secrets enable -version=2 -path=secretsv2 kv
+```
 ### References
  - [Hyperledger Besu Documentation](https://besu.hyperledger.org/)
