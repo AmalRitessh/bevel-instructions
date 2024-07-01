@@ -8,7 +8,6 @@ sudo apt-get update
 sudo apt-get install docker-ce
 ```
 ```bash
-```
 ##############################################################################################
 #  Copyright Accenture. All Rights Reserved.
 #
@@ -246,5 +245,4 @@ network:
             apiPort: 15034
             webhookPort: 15035
 
-```
 ```
