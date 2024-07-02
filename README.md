@@ -93,14 +93,14 @@ vault server -config=config.hcl
 ### Minikube
 
 - For development environment, minikube can be used as the Kubernetes cluster on which the DLT network will be deployed.
-- To install the binary file, use the following command.
+- To install the binary file, use the following command:
 
 ```bash
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
 mv minikube-linux-arm64 minikube  # rename the binary to minikube
 ```
 
-- Move the binary `minikube`, to path `project/bin/` folder
+- Move the binary `minikube`, to path `project/bin/` folder.
   
 ```bash
 mv minikube ./project/bin/
@@ -109,6 +109,10 @@ mv minikube ./project/bin/
 ### Docker
 - Docker is a set of platform-as-a-service products that use OS-level virtualization to deliver software in packages called containers.
 - Install Docker Desktop from their website [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Or install it through cli usifg the following command
+```bash
+
+```
 
 #### Directory Structure (After Pre-requisites)
 ```bash
