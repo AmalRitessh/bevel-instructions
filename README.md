@@ -12,7 +12,7 @@ Hyperledger Bevel is an advanced automation framework tailored for the
 seamless deployment of robust, production-ready Distributed Ledger 
 Technology (DLT) networks on cloud-based infrastructures. Eliminating the 
 need for intricate solution architecture, Bevel empowers teams to deliver with 
-precision 
+precision.
 
 ### Which platforms does Bevel Support?
 Bevel currently supports the following DLT/Blockchain Platforms:
@@ -31,10 +31,9 @@ Bevel currently supports the following DLT/Blockchain Platforms:
 - Docker
 
 ### Git Repository
-
-- So first you are asked to fork Bevel repo from hyperledger/bevel main branch
-- then you have to create a git token
-- once its done, follow the commands to clone repo in host machine
+- First, fork the Bevel repository from the [hyperledger/bevel](https://github.com/hyperledger/bevel) main branch.
+- Then, create a GitHub personal access token by navigating to **Settings** > **Developer settings** > **Personal access tokens** > **Generate new token**.
+- Once it's done, follow the commands to clone repository in host machine.
 
 ``` bash
 mkdir project
@@ -43,7 +42,7 @@ git clone https://<user_name>:<git_token>@github.com/<user_name>/bevel.git
 git remote set-url origin https://<user_name>:<git_token>@github.com/<user_name>/bevel.git #This command changes the remote repository URL to include a GitHub username and token for authentication.
 ```
 
--  to create an local branch in you forked repo follow the commands
+-  To create a local branch in your forked repository, follow these commands:
 
 ``` bash
 cd bevel
@@ -53,7 +52,7 @@ git checkout -b local
 git push --set-upstream origin local
 ```
 
-- to verify, you can check if local branch has been created to you forked bevel repo
+- To verify, you can check if the local branch has been created in your forked Bevel repository.
 
 ### HashiCorp Vault
 - We need Hashicorp Vault for the certificate and key storage.
