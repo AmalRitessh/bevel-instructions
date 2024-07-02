@@ -204,9 +204,9 @@ vault secrets enable -version=2 -path=secretsv2 kv
 
 8. Edit the network configuration file, Choose the DLT/Blockchain platform you want to run and copy the relevant sample network.yaml to `build` folder; rename it to `network.yaml`.
 ```bash
-# For example, for Indy
+# For example, for Fabric
 cd project/bevel
-cp /platforms/hyperledger-indy/configuration/samples/network-minikube.yaml build/network.yaml
+cp platforms/hyperledger-fabric/configuration/samples/network-proxy-none.yaml build/network.yaml
 ```
 - Open the above `build/network.yaml` in your favourite editor and Update Docker configurations:
 ```bash
@@ -243,7 +243,7 @@ vault status
 10. Now run the following commands to deploy your chosen DLT on minikube:
 ```bash
 cd bevel
-docker run -it -v $(pwd):/home/bevel/ --network="host" ghcr.io/hyperledger/bevel-build:latest /bin/bash
+docker run -it -v $(pwd):/home/bevel/ -v <absolute path to project/bin folder>:/root/bin/ --network="host" ghcr.io/hyperledger/bevel-build:latest /bin/bash
 
 # Ensure that git config is setup
 git config --global user.name "UserName"
@@ -280,3 +280,4 @@ export VAULT_TOKEN="<Your Vault root token>"
 ## References
  - [Deploying a DLT network on Minikube using Bevel](https://hyperledger-bevel.readthedocs.io/en/latest/tutorials/bevel-minikube-setup/)
  - [Developer Pre-requisites](https://hyperledger-bevel.readthedocs.io/en/latest/tutorials/dev-prereq/)
+ - [Tool Versions](https://hyperledger-bevel.readthedocs.io/en/latest/references/tool-versions/)
