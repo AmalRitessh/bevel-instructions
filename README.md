@@ -25,10 +25,10 @@ Bevel currently supports the following DLT/Blockchain Platforms:
 
   
 ## Pre-requisites
-- Git Repository
-- HashiCorp Vault
-- Minikube
-- Docker
+- [Git Repository](#git-repository)
+- [HashiCorp Vault](#hashicorp-vault)
+- [Minikube](#minikube)
+- [Docker](#docker)
 
 ### Git Repository
 - First, fork the Bevel repository from the [hyperledger/bevel](https://github.com/hyperledger/bevel) main branch.
