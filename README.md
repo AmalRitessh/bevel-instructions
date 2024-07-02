@@ -109,9 +109,14 @@ mv minikube ./project/bin/
 ### Docker
 - Docker is a set of platform-as-a-service products that use OS-level virtualization to deliver software in packages called containers.
 - Install Docker Desktop from their website [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- Or install it through cli usifg the following command
+- Or install it through CLI using the following commands:
 ```bash
-
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install docker-ce
 ```
 
 #### Directory Structure (After Pre-requisites)
