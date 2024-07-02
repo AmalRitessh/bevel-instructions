@@ -147,8 +147,9 @@ cp ~/.minikube/profiles/minikube/client.crt build/
 ```bash
 cp ~/.kube/config build/
 ```
-6. Open the above `config` file in build directory and update file path for `certificate-authority`, `client-certificate` and `client-key` to `home/bevel/build/ca.crt`, `home/bevel/build/client.crt` and `home/bevel/build/client.key`. (use `minikube ip` command to find the ip of minikube)
+6. Open the above `config` file in build directory and update file path for `certificate-authority`, `client-certificate` and `client-key` to `home/bevel/build/ca.crt`, `home/bevel/build/client.crt` and `home/bevel/build/client.key` respectively. (use `minikube ip` command to find the ip of minikube)
 ```bash
+# example config file
 apiVersion: v1
 clusters:
 - cluster:
