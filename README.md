@@ -56,21 +56,21 @@ git push --set-upstream origin local
 
 ### HashiCorp Vault
 - We need Hashicorp Vault for the certificate and key storage.
-- To install the binary file, use the following command
+- To install the binary file, use the following command:
 
 ```bash
 wget https://releases.hashicorp.com/vault/1.17.1/vault_1.17.1_linux_amd64.zip
 unzip vault_1.17.1_linux_amd64.zip
 ```
 
-- once the binary `vault` is downloaded, move it `project/bin` folder
+- Once the binary `vault` is downloaded, move it `project/bin` folder.
 
 ```bash
 mkdir project/bin
 mv vault ./project/bin/
 export PATH=./project/bin:$PATH
 ```
-- create an `config.hcl` file in `project/` folder with the following contents
+- Create a `config.hcl` file in `project/` folder with the following contents:
 
 ```bash
 ui = true
