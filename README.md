@@ -125,7 +125,7 @@ project
 
 
 ##  Deploying a DLT network on Minikube using Bevel
-1. start minikube, use [public ip]("https://ipv4.icanhazip.com/") to check for the ip address.
+1. start minikube, use [public ip](https://ipv4.icanhazip.com/) to check for the ip address.
 ```bash
 minikube start --memory 2000 --cpus 2 --kubernetes-version=1.23.1 --apiserver-ips=<specify public ip of VM>
 ```
