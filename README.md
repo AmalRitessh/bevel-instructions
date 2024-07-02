@@ -194,7 +194,7 @@ users:
 **NOTE:**
 If you ever delete and recreate minikube, the above steps from 4 to 6 has to be repeated.
 
-7. Setup Hashicorp Vault, this has to be done after you have unsealed vault in another terminal. [HashiCorp Vault](./README.md#hashicorp-vault)
+7. Setup Hashicorp Vault, this has to be done after you have unsealed vault in another terminal. [HashiCorp Vault](#hashicorp-vault)
 ```bash
 export VAULT_ADDR='http://<Your Vault local IP address>:8200'
 export VAULT_TOKEN="<Your Vault root token>"
@@ -284,7 +284,7 @@ export VAULT_TOKEN="<Your Vault root token>"
 
 <p align="center"><img src="./errors/1.jpg"> </p>
 
-- This error is due to wrong configuration of `config` file in `project/bevel/build/config`. The `server:` IP address and port number might be incorrect, or the paths to `certificate-authority:`, `client-certificate:` and `client-key:` might be incorrect. Follow 6th steps in [Deploying a DLT network on Minikube using Bevel](./README.md#deploying-a-dlt-network-on-minikube-using-bevel) to resolve the problem.
+- This error is due to wrong configuration of `config` file in `project/bevel/build/config`. The `server:` IP address and port number might be incorrect, or the paths to `certificate-authority:`, `client-certificate:` and `client-key:` might be incorrect. Follow 6th steps in [Deploying a DLT network on Minikube using Bevel](#deploying-a-dlt-network-on-minikube-using-bevel) to resolve the problem.
 
 ### Install flux cli and bootstrap flux v2
 
@@ -300,7 +300,7 @@ export VAULT_TOKEN="<Your Vault root token>"
 
 <p align="center"><img src="./errors/3.jpg"> </p>
 
-- This error is due to an incorrect cloning of the Bevel repository or an expired Git token. Follow steps in the Pre-requisites [Git Repository](./README.md#git-repository) to resolve the problem.
+- This error is due to an incorrect cloning of the Bevel repository or an expired Git token. Follow steps in the Pre-requisites [Git Repository](#git-repository) to resolve the problem.
 
 ### Write reviewer token for Organizations
 
