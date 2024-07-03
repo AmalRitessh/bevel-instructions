@@ -161,14 +161,14 @@ cp ~/.kube/config build/
 apiVersion: v1
 clusters:
 - cluster:
-    certificate-authority: /home/bevel/build/ca.crt
+    certificate-authority: /home/bevel/build/ca.crt # <- Path to be changed
     extensions:
     - extension:
         last-update: Fri, 28 Jun 2024 13:09:51 IST
         provider: minikube.sigs.k8s.io
         version: v1.33.1
       name: cluster_info
-    server: https://<minikube_ip>:8443
+    server: https://<minikube_ip>:8443 # <- Replace it with minikube IP
   name: minikube
 contexts:
 - context:
@@ -188,8 +188,8 @@ preferences: {}
 users:
 - name: minikube
   user:
-    client-certificate: /home/bevel/build/client.crt
-    client-key: /home/bevel/build/client.key
+    client-certificate: /home/bevel/build/client.crt # <- Path to be changed
+    client-key: /home/bevel/build/client.key # <- Path to be changed
 ```
 **NOTE:**
 If you ever delete and recreate minikube, the above steps from 4 to 6 has to be repeated.
