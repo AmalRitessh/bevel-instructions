@@ -96,7 +96,7 @@ vault server -config=config.hcl
 - To install the binary file, use the following command:
 
 ```bash
-curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 mv minikube-linux-arm64 minikube  # rename the binary to minikube
 ```
 
