@@ -245,6 +245,11 @@ vault status
 cd bevel
 docker run -it -v $(pwd):/home/bevel/ -v <absolute path to project/bin folder>:/root/bin/ --network="host" ghcr.io/hyperledger/bevel-build:latest /bin/bash
 
+# Ensure that vault is reachable
+export VAULT_ADDR='http://<Your Vault local IP address>:8200'
+export VAULT_TOKEN="<Your Vault root token>"
+export KUBECONFIG=/home/bevel/build/config
+
 # Ensure that git config is setup
 git config --global user.name "UserName"
 git config --global user.email "UserEmailAddress"
